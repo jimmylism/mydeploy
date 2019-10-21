@@ -58,9 +58,14 @@ export default class LoginForm extends React.Component {
     
     Axios.post("https://infinity-care.herokuapp.com/login/patient", { user })
       .then(res=> {
+        console.log("Wow it did something!!!")
         if(res.isOtpSent===true && res.isCredentialsAccurate) {
           this.setState({successful: true})
         }
+        else(console.log("Fuck"))
+      })
+      .catch(error => {
+        console.log(error)
       })
   };
 
@@ -125,6 +130,7 @@ export default class LoginForm extends React.Component {
             }}
             inputProps={{
               type: "password",
+              onChange: this.handlePasswordChange,
               endAdornment: (
                 <InputAdornment position="end">
                   <Icon>
@@ -165,8 +171,9 @@ export default class LoginForm extends React.Component {
           color="info">
             Sign In
           </Button>
-          {this.username + " this is " + this.successful}
         </CardFooter>
+        this is: {this.state.username} and {this.state.successful}
+        {console.log(this.state.username)}
       </form>
     );
   }
