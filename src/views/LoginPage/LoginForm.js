@@ -28,6 +28,8 @@ export default class LoginForm extends React.Component {
       userType: "",
       successful: "",
       error: "",
+      response1: "",
+      response2: "",
       cardAnimaton: "cardHidden"
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -59,15 +61,16 @@ export default class LoginForm extends React.Component {
     
     Axios.post("https://infinity-care.herokuapp.com/login/patient", { user })
       .then(res=> {
+        this.setState({response1: res})
         console.log("Wow it did something!!!")
         if(res.isOtpSent===true && res.isCredentialsAccurate) {
-          this.setState({successful: true})
+          this.setState({successful: true, response1: res})
         }
-        else(this.setState({successful: false}))
+        else(this.setState({successful: false, response1: res}))
       })
       .catch(error => {
         console.log(error)
-        this.setState({error: error})
+        this.setState({error: error, response1: res})
       })
   };
 
@@ -175,6 +178,7 @@ export default class LoginForm extends React.Component {
           </Button>
         </CardFooter>
         this is: {this.state.username} and {this.state.successful} or {this.state.error}
+        I'm getting {this.state.res}
         {console.log(this.state.username)}
       </form>
     );
