@@ -59,7 +59,7 @@ export default class LoginForm extends React.Component {
     };
     console.log(user);
     
-    Axios.post("https://infinity-care.herokuapp.com/login/patient", { user })
+    Axios.post("https://infinity-care.herokuapp.com/login/patient", {username: this.state.username, password: this.state.password})
       .then(res=> {
         this.setState({response1: res})
         console.log("Wow it did something!!!")
@@ -76,10 +76,6 @@ export default class LoginForm extends React.Component {
 
   responseFacebook(response) {
     console.log(response);
-  }
-
-  onChange(value) {
-    console.log("Captcha value:", value);
   }
 
   render() {
@@ -164,10 +160,6 @@ export default class LoginForm extends React.Component {
             </Button>
           </div>
           <small style={{display: 'flex', justifyContent: 'center'}}>I agree to the Terms and Conditions &amp; Privacy Policy</small>
-          <ReCAPTCHA
-            sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-            onChange={this.onChange}
-          />
         </CardBody>
         <CardFooter style={{display: 'flex', justifyContent: 'center', margin: 0}}>
           <Button 
