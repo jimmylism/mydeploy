@@ -174,7 +174,7 @@ export default class LoginForm extends React.Component {
             Sign In
           </Button>
         </CardFooter>
-        this is: {this.state.username} and {this.state.successful}
+        this is: {this.state.username} and {this.state.successful} or {this.state.error}
         {console.log(this.state.username)}
       </form>
     );
