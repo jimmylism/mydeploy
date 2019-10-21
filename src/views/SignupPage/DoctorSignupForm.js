@@ -149,7 +149,7 @@ export default class SignupButton extends React.Component {
         >
           Sign up
         </Button>
-        {this.successful}
+        {this.username + " this is " + this.successful}
         </CardFooter>
       </form>
     );
