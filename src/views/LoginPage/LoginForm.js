@@ -28,8 +28,9 @@ export default class LoginForm extends React.Component {
       userType: "",
       successful: "",
       error: "",
-      response1: "",
-      response2: "",
+      response1: [],
+      returnuser: "",
+      returnpass: "",
       cardAnimaton: "cardHidden"
     };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -66,7 +67,7 @@ export default class LoginForm extends React.Component {
         if(res.isOtpSent===true && res.isCredentialsAccurate) {
           this.setState({successful: true, response1: res})
         }
-        else(this.setState({successful: false, response1: res}))
+        else(this.setState({successful: false, response1: res, returnpass: res.password, returnuser: res.username}))
       })
       .catch(error => {
         console.log(error)
