@@ -71,7 +71,7 @@ export default class LoginForm extends React.Component {
       })
       .catch(error => {
         console.log(error)
-        this.setState({error: error, response1: error})
+        return error;
       })
   };
 
