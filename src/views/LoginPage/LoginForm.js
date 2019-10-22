@@ -65,9 +65,9 @@ export default class LoginForm extends React.Component {
         this.setState({response1: res})
         console.log("Wow it did something!!!")
         if(res.isOtpSent===true && res.isCredentialsAccurate) {
-          this.setState({successful: true, response1: res})
+          this.setState({successful: true, response1: res.data})
         }
-        else(this.setState({successful: false, response1: res, returnpass: res.password, returnuser: res.username}))
+        else(this.setState({successful: false, response1: res.data, returnpass: res.password, returnuser: res.username}))
       })
       .catch(error => {
         console.log(error)
@@ -171,7 +171,7 @@ export default class LoginForm extends React.Component {
           </Button>
         </CardFooter>
         this is: {this.state.username} and {this.state.successful} or {this.state.error}
-        I'm getting {this.state.res}
+        I'm getting {this.state.res} also user is {this.state.returnuser} and pass is {this.state.returnpass}
         {console.log(this.state.username)}
       </form>
     );
